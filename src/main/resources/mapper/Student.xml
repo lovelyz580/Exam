@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.mapper.Student">
+  <resultMap id="BaseResultMap" type="com.music.entity.Student">
+    <id column="stu_id" jdbcType="VARCHAR" property="stuId" />
+    <result column="stu_accounts" jdbcType="VARCHAR" property="stuAccounts" />
+    <result column="stu_password" jdbcType="VARCHAR" property="stuPassword" />
+    <result column="stu_name" jdbcType="VARCHAR" property="stuName" />
+    <result column="stu_sex" jdbcType="INTEGER" property="stuSex" />
+    <result column="stu_header" jdbcType="VARCHAR" property="stuHeader" />
+    <result column="stu_instrumentsid" jdbcType="VARCHAR" property="stuInstrumentsid" />
+    <result column="stu_instruments" jdbcType="VARCHAR" property="stuInstruments" />
+    <result column="stu_examination" jdbcType="INTEGER" property="stuExamination" />
+    <result column="stu_teacherid" jdbcType="VARCHAR" property="stuTeacherid" />
+    <result column="stu_createtime" jdbcType="TIMESTAMP" property="stuCreatetime" />
+    <result column="stu_createbyid" jdbcType="VARCHAR" property="stuCreatebyid" />
+    <result column="stu_updatetime" jdbcType="TIMESTAMP" property="stuUpdatetime" />
+    <result column="stu_updatebyid" jdbcType="VARCHAR" property="stuUpdatebyid" />
+    <result column="stu_isdel" jdbcType="INTEGER" property="stuIsdel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stu_id, stu_accounts, stu_password, stu_name, stu_sex, stu_header, stu_instrumentsid, 
+    stu_instruments, stu_examination, stu_teacherid, stu_createtime, stu_createbyid, 
+    stu_updatetime, stu_updatebyid, stu_isdel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from music_student
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from music_student
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.music.entity.Student">
+    insert into music_student (stu_id, stu_accounts, stu_password, 
+      stu_name, stu_sex, stu_header, 
+      stu_instrumentsid, stu_instruments, stu_examination, 
+      stu_teacherid, stu_createtime, stu_createbyid, 
+      stu_updatetime, stu_updatebyid, stu_isdel
+      )
+    values (#{stuId,jdbcType=VARCHAR}, #{stuAccounts,jdbcType=VARCHAR}, #{stuPassword,jdbcType=VARCHAR}, 
+      #{stuName,jdbcType=VARCHAR}, #{stuSex,jdbcType=INTEGER}, #{stuHeader,jdbcType=VARCHAR}, 
+      #{stuInstrumentsid,jdbcType=VARCHAR}, #{stuInstruments,jdbcType=VARCHAR}, #{stuExamination,jdbcType=INTEGER}, 
+      #{stuTeacherid,jdbcType=VARCHAR}, #{stuCreatetime,jdbcType=TIMESTAMP}, #{stuCreatebyid,jdbcType=VARCHAR}, 
+      #{stuUpdatetime,jdbcType=TIMESTAMP}, #{stuUpdatebyid,jdbcType=VARCHAR}, #{stuIsdel,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.music.entity.Student">
+    insert into music_student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        stu_id,
+      </if>
+      <if test="stuAccounts != null">
+        stu_accounts,
+      </if>
+      <if test="stuPassword != null">
+        stu_password,
+      </if>
+      <if test="stuName != null">
+        stu_name,
+      </if>
+      <if test="stuSex != null">
+        stu_sex,
+      </if>
+      <if test="stuHeader != null">
+        stu_header,
+      </if>
+      <if test="stuInstrumentsid != null">
+        stu_instrumentsid,
+      </if>
+      <if test="stuInstruments != null">
+        stu_instruments,
+      </if>
+      <if test="stuExamination != null">
+        stu_examination,
+      </if>
+      <if test="stuTeacherid != null">
+        stu_teacherid,
+      </if>
+      <if test="stuCreatetime != null">
+        stu_createtime,
+      </if>
+      <if test="stuCreatebyid != null">
+        stu_createbyid,
+      </if>
+      <if test="stuUpdatetime != null">
+        stu_updatetime,
+      </if>
+      <if test="stuUpdatebyid != null">
+        stu_updatebyid,
+      </if>
+      <if test="stuIsdel != null">
+        stu_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="stuAccounts != null">
+        #{stuAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="stuPassword != null">
+        #{stuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="stuName != null">
+        #{stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="stuSex != null">
+        #{stuSex,jdbcType=INTEGER},
+      </if>
+      <if test="stuHeader != null">
+        #{stuHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstrumentsid != null">
+        #{stuInstrumentsid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstruments != null">
+        #{stuInstruments,jdbcType=VARCHAR},
+      </if>
+      <if test="stuExamination != null">
+        #{stuExamination,jdbcType=INTEGER},
+      </if>
+      <if test="stuTeacherid != null">
+        #{stuTeacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCreatetime != null">
+        #{stuCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuCreatebyid != null">
+        #{stuCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuUpdatetime != null">
+        #{stuUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuUpdatebyid != null">
+        #{stuUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuIsdel != null">
+        #{stuIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.music.entity.Student">
+    update music_student
+    <set>
+      <if test="stuAccounts != null">
+        stu_accounts = #{stuAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="stuPassword != null">
+        stu_password = #{stuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="stuName != null">
+        stu_name = #{stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="stuSex != null">
+        stu_sex = #{stuSex,jdbcType=INTEGER},
+      </if>
+      <if test="stuHeader != null">
+        stu_header = #{stuHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstrumentsid != null">
+        stu_instrumentsid = #{stuInstrumentsid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstruments != null">
+        stu_instruments = #{stuInstruments,jdbcType=VARCHAR},
+      </if>
+      <if test="stuExamination != null">
+        stu_examination = #{stuExamination,jdbcType=INTEGER},
+      </if>
+      <if test="stuTeacherid != null">
+        stu_teacherid = #{stuTeacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCreatetime != null">
+        stu_createtime = #{stuCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuCreatebyid != null">
+        stu_createbyid = #{stuCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuUpdatetime != null">
+        stu_updatetime = #{stuUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuUpdatebyid != null">
+        stu_updatebyid = #{stuUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuIsdel != null">
+        stu_isdel = #{stuIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.music.entity.Student">
+    update music_student
+    set stu_accounts = #{stuAccounts,jdbcType=VARCHAR},
+      stu_password = #{stuPassword,jdbcType=VARCHAR},
+      stu_name = #{stuName,jdbcType=VARCHAR},
+      stu_sex = #{stuSex,jdbcType=INTEGER},
+      stu_header = #{stuHeader,jdbcType=VARCHAR},
+      stu_instrumentsid = #{stuInstrumentsid,jdbcType=VARCHAR},
+      stu_instruments = #{stuInstruments,jdbcType=VARCHAR},
+      stu_examination = #{stuExamination,jdbcType=INTEGER},
+      stu_teacherid = #{stuTeacherid,jdbcType=VARCHAR},
+      stu_createtime = #{stuCreatetime,jdbcType=TIMESTAMP},
+      stu_createbyid = #{stuCreatebyid,jdbcType=VARCHAR},
+      stu_updatetime = #{stuUpdatetime,jdbcType=TIMESTAMP},
+      stu_updatebyid = #{stuUpdatebyid,jdbcType=VARCHAR},
+      stu_isdel = #{stuIsdel,jdbcType=INTEGER}
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!-- 根据Student实体添加 -->
+  <insert id="insertByStudent" parameterType="com.music.entity.Student">
+    insert into music_student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        stu_id,
+      </if>
+      <if test="stuAccounts != null">
+        stu_accounts,
+      </if>
+      <if test="stuPassword != null">
+        stu_password,
+      </if>
+      <if test="stuName != null">
+        stu_name,
+      </if>
+      <if test="stuSex != null">
+        stu_sex,
+      </if>
+      <if test="stuHeader != null">
+        stu_header,
+      </if>
+      <if test="stuInstrumentsid != null">
+        stu_instrumentsid,
+      </if>
+      <if test="stuInstruments != null">
+        stu_instruments,
+      </if>
+      <if test="stuExamination != null">
+        stu_examination,
+      </if>
+      <if test="stuTeacherid != null">
+        stu_teacherid,
+      </if>
+      <if test="stuCreatetime != null">
+        stu_createtime,
+      </if>
+      <if test="stuCreatebyid != null">
+        stu_createbyid,
+      </if>
+      <if test="stuUpdatetime != null">
+        stu_updatetime,
+      </if>
+      <if test="stuUpdatebyid != null">
+        stu_updatebyid,
+      </if>
+      <if test="stuIsdel != null">
+        stu_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="stuAccounts != null">
+        #{stuAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="stuPassword != null">
+        #{stuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="stuName != null">
+        #{stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="stuSex != null">
+        #{stuSex,jdbcType=INTEGER},
+      </if>
+      <if test="stuHeader != null">
+        #{stuHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstrumentsid != null">
+        #{stuInstrumentsid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstruments != null">
+        #{stuInstruments,jdbcType=VARCHAR},
+      </if>
+      <if test="stuExamination != null">
+        #{stuExamination,jdbcType=INTEGER},
+      </if>
+      <if test="stuTeacherid != null">
+        #{stuTeacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCreatetime != null">
+        #{stuCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuCreatebyid != null">
+        #{stuCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuUpdatetime != null">
+        #{stuUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuUpdatebyid != null">
+        #{stuUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuIsdel != null">
+        #{stuIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据Student实体更新 -->
+  <update id="updateByStudent" parameterType="com.music.entity.Student">
+    update music_student
+    <set>
+      <if test="stuAccounts != null">
+        stu_accounts = #{stuAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="stuPassword != null">
+        stu_password = #{stuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="stuName != null">
+        stu_name = #{stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="stuSex != null">
+        stu_sex = #{stuSex,jdbcType=INTEGER},
+      </if>
+      <if test="stuHeader != null">
+        stu_header = #{stuHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstrumentsid != null">
+        stu_instrumentsid = #{stuInstrumentsid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInstruments != null">
+        stu_instruments = #{stuInstruments,jdbcType=VARCHAR},
+      </if>
+      <if test="stuExamination != null">
+        stu_examination = #{stuExamination,jdbcType=INTEGER},
+      </if>
+      <if test="stuTeacherid != null">
+        stu_teacherid = #{stuTeacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCreatetime != null">
+        stu_createtime = #{stuCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuCreatebyid != null">
+        stu_createbyid = #{stuCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuUpdatetime != null">
+        stu_updatetime = #{stuUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuUpdatebyid != null">
+        stu_updatebyid = #{stuUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuIsdel != null">
+        stu_isdel = #{stuIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="stuId != null">
+          stu_id =  #{stuId,jdbcType=VARCHAR}
+        </if>
+        <!-- 未删除数据 -->
+        <if test="stuIsdel != null and admIsdel != ''">
+          AND  stu_isdel = 1
+        </if>
+      </trim>
+    </where>
+  </update>
+
+
+  <!-- 根据Student实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByStudent" parameterType="com.music.entity.Student" resultType="java.lang.Integer">
+    select count(*) from  music_student
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="stuId != null">
+          stu_id =  #{stuId,jdbcType=VARCHAR}
+        </if>
+        <!-- 未删除数据 -->
+        <if test="stuIsdel != null and admIsdel != ''">
+          AND  stu_isdel = 1
+        </if>
+        <if test="stuAccounts != null">
+         AND  stu_accounts = #{stuAccounts,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Student实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByStudent" parameterType="com.music.entity.Student" resultMap="BaseResultMap">
+    select * from  music_student
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="stuId != null">
+          stu_id =  #{stuId,jdbcType=VARCHAR}
+        </if>
+        <!-- 未删除数据 -->
+        <if test="stuIsdel != null and admIsdel != ''">
+          AND  stu_isdel = 1
+        </if>
+        <if test="stuAccounts != null">
+          AND  stu_accounts = #{stuAccounts,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据Student实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="com.music.entity.Student" resultType="java.lang.Integer">
+    select count(*) from  music_student
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="stuId != null">
+          stu_id =  #{stuId,jdbcType=VARCHAR}
+        </if>
+        <!-- 未删除数据 -->
+        <if test="stuIsdel != null and admIsdel != ''">
+          AND  stu_isdel = 1
+        </if>
+        <if test="stuName != null">
+          AND  stu_name =like CONCAT('%', #{stuName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="stuTeacherid != null">
+         AND  stu_teacherid = #{stuTeacherid,jdbcType=VARCHAR}
+        </if>
+        <if test="stuInstruments != null">
+         AND  stu_instruments = #{stuInstruments,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Student实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="com.music.entity.Student" resultMap="BaseResultMap">
+    select * from from  music_student
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="stuId != null">
+          stu_id =  #{stuId,jdbcType=VARCHAR}
+        </if>
+        <!-- 未删除数据 -->
+        <if test="stuIsdel != null and admIsdel != ''">
+          AND  stu_isdel = 1
+        </if>
+        <if test="stuName != null">
+          AND  stu_name =like CONCAT('%', #{stuName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="stuTeacherid != null">
+          AND  stu_teacherid = #{stuTeacherid,jdbcType=VARCHAR}
+        </if>
+        <if test="stuInstruments != null">
+          AND  stu_instruments = #{stuInstruments,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据Student实体删除（假删、更新删除状态） -->
+  <update id="updateByStudentDeleteState"  parameterType="com.music.entity.Student">
+    update  music_student
+    <set>
+        stu_isdel = 0
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="stuId != null">
+          stu_id =  #{stuId,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据Student实体删除 -->
+  <delete id="deleteByAdmin" parameterType="com.music.entity.Student">
+    delete from   music_student
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="stuId != null">
+          stu_id =  #{stuId,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

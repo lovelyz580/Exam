@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.mapper.Teacher">
+  <resultMap id="BaseResultMap" type="com.music.entity.Teacher">
+    <id column="tea_id" jdbcType="VARCHAR" property="teaId" />
+    <result column="tea_name" jdbcType="VARCHAR" property="teaName" />
+    <result column="tea_accounts" jdbcType="VARCHAR" property="teaAccounts" />
+    <result column="tea_password" jdbcType="VARCHAR" property="teaPassword" />
+    <result column="tea_sex" jdbcType="INTEGER" property="teaSex" />
+    <result column="tea_header" jdbcType="VARCHAR" property="teaHeader" />
+    <result column="tea_instrumentsid" jdbcType="VARCHAR" property="teaInstrumentsid" />
+    <result column="tea_instruments" jdbcType="VARCHAR" property="teaInstruments" />
+    <result column="tea_createtime" jdbcType="TIMESTAMP" property="teaCreatetime" />
+    <result column="tea_createbyid" jdbcType="VARCHAR" property="teaCreatebyid" />
+    <result column="tea_updatetime" jdbcType="TIMESTAMP" property="teaUpdatetime" />
+    <result column="tea_updatebyid" jdbcType="VARCHAR" property="teaUpdatebyid" />
+    <result column="tea_isdel" jdbcType="INTEGER" property="teaIsdel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tea_id, tea_name, tea_accounts, tea_password, tea_sex, tea_header, tea_instrumentsid, 
+    tea_instruments, tea_createtime, tea_createbyid, tea_updatetime, tea_updatebyid, 
+    tea_isdel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from music_teacher
+    where tea_id = #{teaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from music_teacher
+    where tea_id = #{teaId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.music.entity.Teacher">
+    insert into music_teacher (tea_id, tea_name, tea_accounts, 
+      tea_password, tea_sex, tea_header, 
+      tea_instrumentsid, tea_instruments, tea_createtime, 
+      tea_createbyid, tea_updatetime, tea_updatebyid, 
+      tea_isdel)
+    values (#{teaId,jdbcType=VARCHAR}, #{teaName,jdbcType=VARCHAR}, #{teaAccounts,jdbcType=VARCHAR}, 
+      #{teaPassword,jdbcType=VARCHAR}, #{teaSex,jdbcType=INTEGER}, #{teaHeader,jdbcType=VARCHAR}, 
+      #{teaInstrumentsid,jdbcType=VARCHAR}, #{teaInstruments,jdbcType=VARCHAR}, #{teaCreatetime,jdbcType=TIMESTAMP}, 
+      #{teaCreatebyid,jdbcType=VARCHAR}, #{teaUpdatetime,jdbcType=TIMESTAMP}, #{teaUpdatebyid,jdbcType=VARCHAR}, 
+      #{teaIsdel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.music.entity.Teacher">
+    insert into music_teacher
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teaId != null">
+        tea_id,
+      </if>
+      <if test="teaName != null">
+        tea_name,
+      </if>
+      <if test="teaAccounts != null">
+        tea_accounts,
+      </if>
+      <if test="teaPassword != null">
+        tea_password,
+      </if>
+      <if test="teaSex != null">
+        tea_sex,
+      </if>
+      <if test="teaHeader != null">
+        tea_header,
+      </if>
+      <if test="teaInstrumentsid != null">
+        tea_instrumentsid,
+      </if>
+      <if test="teaInstruments != null">
+        tea_instruments,
+      </if>
+      <if test="teaCreatetime != null">
+        tea_createtime,
+      </if>
+      <if test="teaCreatebyid != null">
+        tea_createbyid,
+      </if>
+      <if test="teaUpdatetime != null">
+        tea_updatetime,
+      </if>
+      <if test="teaUpdatebyid != null">
+        tea_updatebyid,
+      </if>
+      <if test="teaIsdel != null">
+        tea_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teaId != null">
+        #{teaId,jdbcType=VARCHAR},
+      </if>
+      <if test="teaName != null">
+        #{teaName,jdbcType=VARCHAR},
+      </if>
+      <if test="teaAccounts != null">
+        #{teaAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="teaPassword != null">
+        #{teaPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teaSex != null">
+        #{teaSex,jdbcType=INTEGER},
+      </if>
+      <if test="teaHeader != null">
+        #{teaHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="teaInstrumentsid != null">
+        #{teaInstrumentsid,jdbcType=VARCHAR},
+      </if>
+      <if test="teaInstruments != null">
+        #{teaInstruments,jdbcType=VARCHAR},
+      </if>
+      <if test="teaCreatetime != null">
+        #{teaCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teaCreatebyid != null">
+        #{teaCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="teaUpdatetime != null">
+        #{teaUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teaUpdatebyid != null">
+        #{teaUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="teaIsdel != null">
+        #{teaIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.music.entity.Teacher">
+    update music_teacher
+    <set>
+      <if test="teaName != null">
+        tea_name = #{teaName,jdbcType=VARCHAR},
+      </if>
+      <if test="teaAccounts != null">
+        tea_accounts = #{teaAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="teaPassword != null">
+        tea_password = #{teaPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teaSex != null">
+        tea_sex = #{teaSex,jdbcType=INTEGER},
+      </if>
+      <if test="teaHeader != null">
+        tea_header = #{teaHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="teaInstrumentsid != null">
+        tea_instrumentsid = #{teaInstrumentsid,jdbcType=VARCHAR},
+      </if>
+      <if test="teaInstruments != null">
+        tea_instruments = #{teaInstruments,jdbcType=VARCHAR},
+      </if>
+      <if test="teaCreatetime != null">
+        tea_createtime = #{teaCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teaCreatebyid != null">
+        tea_createbyid = #{teaCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="teaUpdatetime != null">
+        tea_updatetime = #{teaUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teaUpdatebyid != null">
+        tea_updatebyid = #{teaUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="teaIsdel != null">
+        tea_isdel = #{teaIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tea_id = #{teaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.music.entity.Teacher">
+    update music_teacher
+    set tea_name = #{teaName,jdbcType=VARCHAR},
+      tea_accounts = #{teaAccounts,jdbcType=VARCHAR},
+      tea_password = #{teaPassword,jdbcType=VARCHAR},
+      tea_sex = #{teaSex,jdbcType=INTEGER},
+      tea_header = #{teaHeader,jdbcType=VARCHAR},
+      tea_instrumentsid = #{teaInstrumentsid,jdbcType=VARCHAR},
+      tea_instruments = #{teaInstruments,jdbcType=VARCHAR},
+      tea_createtime = #{teaCreatetime,jdbcType=TIMESTAMP},
+      tea_createbyid = #{teaCreatebyid,jdbcType=VARCHAR},
+      tea_updatetime = #{teaUpdatetime,jdbcType=TIMESTAMP},
+      tea_updatebyid = #{teaUpdatebyid,jdbcType=VARCHAR},
+      tea_isdel = #{teaIsdel,jdbcType=INTEGER}
+    where tea_id = #{teaId,jdbcType=VARCHAR}
+  </update>
+</mapper>

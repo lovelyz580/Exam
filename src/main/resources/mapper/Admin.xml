@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--管理員表-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.mapper.Admin">
+  <resultMap id="BaseResultMap" type="com.music.entity.Admin">
+    <id column="adm_id" jdbcType="VARCHAR" property="admId" />
+    <result column="adm_name" jdbcType="VARCHAR" property="admName" />
+    <result column="adm_accounts" jdbcType="VARCHAR" property="admAccounts" />
+    <result column="adm_password" jdbcType="VARCHAR" property="admPassword" />
+    <result column="adm_header" jdbcType="VARCHAR" property="admHeader" />
+    <result column="adm_isroot" jdbcType="INTEGER" property="admIsroot" />
+    <result column="adm_createtime" jdbcType="TIMESTAMP" property="admCreatetime" />
+    <result column="adm_createbyid" jdbcType="VARCHAR" property="admCreatebyid" />
+    <result column="adm_updatetime" jdbcType="TIMESTAMP" property="admUpdatetime" />
+    <result column="adm_updatebyid" jdbcType="VARCHAR" property="admUpdatebyid" />
+    <result column="adm_isdel" jdbcType="INTEGER" property="admIsdel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    adm_id, adm_name, adm_accounts, adm_password, adm_header, adm_isroot, adm_createtime, 
+    adm_createbyid, adm_updatetime, adm_updatebyid, adm_isdel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from music_admin
+    where adm_id = #{admId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from music_admin
+    where adm_id = #{admId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.music.entity.Admin">
+    insert into music_admin (adm_id, adm_name, adm_accounts, 
+      adm_password, adm_header, adm_isroot, 
+      adm_createtime, adm_createbyid, adm_updatetime, 
+      adm_updatebyid, adm_isdel)
+    values (#{admId,jdbcType=VARCHAR}, #{admName,jdbcType=VARCHAR}, #{admAccounts,jdbcType=VARCHAR}, 
+      #{admPassword,jdbcType=VARCHAR}, #{admHeader,jdbcType=VARCHAR}, #{admIsroot,jdbcType=INTEGER}, 
+      #{admCreatetime,jdbcType=TIMESTAMP}, #{admCreatebyid,jdbcType=VARCHAR}, #{admUpdatetime,jdbcType=TIMESTAMP}, 
+      #{admUpdatebyid,jdbcType=VARCHAR}, #{admIsdel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.music.entity.Admin">
+    insert into music_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        adm_id,
+      </if>
+      <if test="admName != null">
+        adm_name,
+      </if>
+      <if test="admAccounts != null">
+        adm_accounts,
+      </if>
+      <if test="admPassword != null">
+        adm_password,
+      </if>
+      <if test="admHeader != null">
+        adm_header,
+      </if>
+      <if test="admIsroot != null">
+        adm_isroot,
+      </if>
+      <if test="admCreatetime != null">
+        adm_createtime,
+      </if>
+      <if test="admCreatebyid != null">
+        adm_createbyid,
+      </if>
+      <if test="admUpdatetime != null">
+        adm_updatetime,
+      </if>
+      <if test="admUpdatebyid != null">
+        adm_updatebyid,
+      </if>
+      <if test="admIsdel != null">
+        adm_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        #{admId,jdbcType=VARCHAR},
+      </if>
+      <if test="admName != null">
+        #{admName,jdbcType=VARCHAR},
+      </if>
+      <if test="admAccounts != null">
+        #{admAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="admPassword != null">
+        #{admPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="admHeader != null">
+        #{admHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsroot != null">
+        #{admIsroot,jdbcType=INTEGER},
+      </if>
+      <if test="admCreatetime != null">
+        #{admCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admCreatebyid != null">
+        #{admCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admUpdatetime != null">
+        #{admUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admUpdatebyid != null">
+        #{admUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsdel != null">
+        #{admIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.music.entity.Admin">
+    update music_admin
+    <set>
+      <if test="admName != null">
+        adm_name = #{admName,jdbcType=VARCHAR},
+      </if>
+      <if test="admAccounts != null">
+        adm_accounts = #{admAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="admPassword != null">
+        adm_password = #{admPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="admHeader != null">
+        adm_header = #{admHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsroot != null">
+        adm_isroot = #{admIsroot,jdbcType=INTEGER},
+      </if>
+      <if test="admCreatetime != null">
+        adm_createtime = #{admCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admCreatebyid != null">
+        adm_createbyid = #{admCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admUpdatetime != null">
+        adm_updatetime = #{admUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admUpdatebyid != null">
+        adm_updatebyid = #{admUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsdel != null">
+        adm_isdel = #{admIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where adm_id = #{admId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.music.entity.Admin">
+    update music_admin
+    set adm_name = #{admName,jdbcType=VARCHAR},
+      adm_accounts = #{admAccounts,jdbcType=VARCHAR},
+      adm_password = #{admPassword,jdbcType=VARCHAR},
+      adm_header = #{admHeader,jdbcType=VARCHAR},
+      adm_isroot = #{admIsroot,jdbcType=INTEGER},
+      adm_createtime = #{admCreatetime,jdbcType=TIMESTAMP},
+      adm_createbyid = #{admCreatebyid,jdbcType=VARCHAR},
+      adm_updatetime = #{admUpdatetime,jdbcType=TIMESTAMP},
+      adm_updatebyid = #{admUpdatebyid,jdbcType=VARCHAR},
+      adm_isdel = #{admIsdel,jdbcType=INTEGER}
+    where adm_id = #{admId,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据Admin实体添加 -->
+  <insert id="insertByUser" parameterType="com.music.entity.Admin">
+    insert into music_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        adm_id,
+      </if>
+      <if test="admName != null">
+        adm_name,
+      </if>
+      <if test="admAccounts != null">
+        adm_accounts,
+      </if>
+      <if test="admPassword != null">
+        adm_password,
+      </if>
+      <if test="admHeader != null">
+        adm_header,
+      </if>
+      <if test="admIsroot != null">
+        adm_isroot,
+      </if>
+      <if test="admCreatetime != null">
+        adm_createtime,
+      </if>
+      <if test="admCreatebyid != null">
+        adm_createbyid,
+      </if>
+      <if test="admUpdatetime != null">
+        adm_updatetime,
+      </if>
+      <if test="admUpdatebyid != null">
+        adm_updatebyid,
+      </if>
+      <if test="admIsdel != null">
+        adm_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="admId != null">
+        #{admId,jdbcType=VARCHAR},
+      </if>
+      <if test="admName != null">
+        #{admName,jdbcType=VARCHAR},
+      </if>
+      <if test="admAccounts != null">
+        #{admAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="admPassword != null">
+        #{admPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="admHeader != null">
+        #{admHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsroot != null">
+        #{admIsroot,jdbcType=INTEGER},
+      </if>
+      <if test="admCreatetime != null">
+        #{admCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admCreatebyid != null">
+        #{admCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admUpdatetime != null">
+        #{admUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admUpdatebyid != null">
+        #{admUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsdel != null">
+        #{admIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据Admin实体更新 -->
+  <update id="updateByAdmin" parameterType="com.music.entity.Admin">
+    update music_admin
+    <set>
+      <if test="admName != null">
+        adm_name = #{admName,jdbcType=VARCHAR},
+      </if>
+      <if test="admAccounts != null">
+        adm_accounts = #{admAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="admPassword != null">
+        adm_password = #{admPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="admHeader != null">
+        adm_header = #{admHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsroot != null">
+        adm_isroot = #{admIsroot,jdbcType=INTEGER},
+      </if>
+      <if test="admCreatetime != null">
+        adm_createtime = #{admCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admCreatebyid != null">
+        adm_createbyid = #{admCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admUpdatetime != null">
+        adm_updatetime = #{admUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admUpdatebyid != null">
+        adm_updatebyid = #{admUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="admIsdel != null">
+        adm_isdel = #{admIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="admId != null">
+          adm_id =  #{admId,jdbcType=VARCHAR}
+        </if>
+        <!-- 未删除数据 -->
+        <if test="admIsdel != null and admIsdel != ''">
+          AND  adm_isdel = 1
+        </if>
+      </trim>
+    </where>
+  </update>
+
+
+  <!-- 根据Admin实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByAdmin" parameterType="com.music.entity.Admin" resultType="java.lang.Integer">
+    select count(*) from music_admin
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+          adm_isdel = 1
+        <if test="admId != null">
+        AND   adm_id =  #{admId,jdbcType=VARCHAR},
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Admin实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByAdmin" parameterType="com.music.entity.Admin" resultMap="BaseResultMap">
+    select * from music_admin
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+         adm_isdel = 1
+        <if test="admId != null">
+          AND  adm_id = #{admId,jdbcType=VARCHAR}
+        </if>
+        <if test="admAccounts != null">
+         AND  adm_accounts = #{admAccounts,jdbcType=VARCHAR}
+        </if>
+        <if test="admPassword != null">
+        AND   adm_password = #{admPassword,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据Admin实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="com.music.entity.Admin" resultType="java.lang.Integer">
+    select count(*) from music_admin
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+        adm_isdel = 1
+        <if test="admId != null">
+          AND  adm_id = #{admId,jdbcType=VARCHAR}
+        </if>
+        <if test="admName != null and admName !=''">
+        AND   adm_name like CONCAT('%', #{admName,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Admin实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="com.music.entity.Admin" resultMap="BaseResultMap">
+    select * from music_admin
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+        adm_isdel = 1
+        <if test="admId != null">
+          AND  adm_id = #{admId,jdbcType=VARCHAR}
+        </if>
+        <if test="admName != null and admName !=''">
+         AND  adm_name like CONCAT('%', #{admName,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据Admin实体删除（假删、更新删除状态） -->
+  <update id="updateByAdminDeleteState"  parameterType="com.music.entity.Admin">
+    update  music_admin
+    <set>
+      adm_isdel = 0
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="admId != null">
+            adm_id = #{admId,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据Admin实体删除 -->
+  <delete id="deleteByAdmin" parameterType="com.music.entity.Admin">
+    delete from  music_admin
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="admId != null">
+          AND  adm_id = #{admId,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+
+</mapper>

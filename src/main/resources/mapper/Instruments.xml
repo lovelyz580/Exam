@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.mapper.Instruments">
+  <resultMap id="BaseResultMap" type="com.music.entity.Instruments">
+    <id column="ins_id" jdbcType="VARCHAR" property="insId" />
+    <result column="ins_name" jdbcType="VARCHAR" property="insName" />
+    <result column="ins_createtime" jdbcType="TIMESTAMP" property="insCreatetime" />
+    <result column="ins_createbyid" jdbcType="VARCHAR" property="insCreatebyid" />
+    <result column="ins_updatetime" jdbcType="TIMESTAMP" property="insUpdatetime" />
+    <result column="ins_updatebyid" jdbcType="VARCHAR" property="insUpdatebyid" />
+    <result column="ins_isdel" jdbcType="INTEGER" property="insIsdel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ins_id, ins_name, ins_createtime, ins_createbyid, ins_updatetime, ins_updatebyid, 
+    ins_isdel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from music_instruments
+    where ins_id = #{insId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from music_instruments
+    where ins_id = #{insId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.music.entity.Instruments">
+    insert into music_instruments (ins_id, ins_name, ins_createtime, 
+      ins_createbyid, ins_updatetime, ins_updatebyid, 
+      ins_isdel)
+    values (#{insId,jdbcType=VARCHAR}, #{insName,jdbcType=VARCHAR}, #{insCreatetime,jdbcType=TIMESTAMP},
+      #{insCreatebyid,jdbcType=VARCHAR}, #{insUpdatetime,jdbcType=TIMESTAMP}, #{insUpdatebyid,jdbcType=VARCHAR}, 
+      #{insIsdel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.music.entity.Instruments">
+    insert into music_instruments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="insId != null">
+        ins_id,
+      </if>
+      <if test="insName != null">
+        ins_name,
+      </if>
+      <if test="insCreatetime != null">
+        ins_createtime,
+      </if>
+      <if test="insCreatebyid != null">
+        ins_createbyid,
+      </if>
+      <if test="insUpdatetime != null">
+        ins_updatetime,
+      </if>
+      <if test="insUpdatebyid != null">
+        ins_updatebyid,
+      </if>
+      <if test="insIsdel != null">
+        ins_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="insId != null">
+        #{insId,jdbcType=VARCHAR},
+      </if>
+      <if test="insName != null">
+        #{insName,jdbcType=VARCHAR},
+      </if>
+      <if test="insCreatetime != null">
+        #{insCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insCreatebyid != null">
+        #{insCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insUpdatetime != null">
+        #{insUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUpdatebyid != null">
+        #{insUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insIsdel != null">
+        #{insIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.music.entity.Instruments">
+    update music_instruments
+    <set>
+      <if test="insName != null">
+        ins_name = #{insName,jdbcType=VARCHAR},
+      </if>
+      <if test="insCreatetime != null">
+        ins_createtime = #{insCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insCreatebyid != null">
+        ins_createbyid = #{insCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insUpdatetime != null">
+        ins_updatetime = #{insUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUpdatebyid != null">
+        ins_updatebyid = #{insUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insIsdel != null">
+        ins_isdel = #{insIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ins_id = #{insId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.music.entity.Instruments">
+    update music_instruments
+    set ins_name = #{insName,jdbcType=VARCHAR},
+      ins_createtime = #{insCreatetime,jdbcType=TIMESTAMP},
+      ins_createbyid = #{insCreatebyid,jdbcType=VARCHAR},
+      ins_updatetime = #{insUpdatetime,jdbcType=TIMESTAMP},
+      ins_updatebyid = #{insUpdatebyid,jdbcType=VARCHAR},
+      ins_isdel = #{insIsdel,jdbcType=INTEGER}
+    where ins_id = #{insId,jdbcType=VARCHAR}
+  </update>
+
+
+  <!-- 根据Instruments实体添加 -->
+  <insert id="insertByInstruments" parameterType="com.music.entity.Instruments">
+    insert into music_instruments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="insId != null">
+        ins_id,
+      </if>
+      <if test="insName != null">
+        ins_name,
+      </if>
+      <if test="insCreatetime != null">
+        ins_createtime,
+      </if>
+      <if test="insCreatebyid != null">
+        ins_createbyid,
+      </if>
+      <if test="insUpdatetime != null">
+        ins_updatetime,
+      </if>
+      <if test="insUpdatebyid != null">
+        ins_updatebyid,
+      </if>
+      <if test="insIsdel != null">
+        ins_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="insId != null">
+        #{insId,jdbcType=VARCHAR},
+      </if>
+      <if test="insName != null">
+        #{insName,jdbcType=VARCHAR},
+      </if>
+      <if test="insCreatetime != null">
+        #{insCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insCreatebyid != null">
+        #{insCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insUpdatetime != null">
+        #{insUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUpdatebyid != null">
+        #{insUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insIsdel != null">
+        #{insIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <!-- 根据Instruments实体更新 -->
+  <update id="updateByInstruments" parameterType="com.music.entity.Instruments">
+    update music_instruments
+    <set>
+      <if test="insName != null">
+        ins_name = #{insName,jdbcType=VARCHAR},
+      </if>
+      <if test="insCreatetime != null">
+        ins_createtime = #{insCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insCreatebyid != null">
+        ins_createbyid = #{insCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insUpdatetime != null">
+        ins_updatetime = #{insUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUpdatebyid != null">
+        ins_updatebyid = #{insUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="insIsdel != null">
+        ins_isdel = #{insIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="insId != null">
+          ins_id = #{insId,jdbcType=VARCHAR}
+        </if>
+        <!-- 未删除数据 -->
+        <if test="insIsdel != null and insIsdel != ''">
+          AND  ins_isdel = 1
+        </if>
+      </trim>
+    </where>
+  </update>
+
+
+  <!-- 根据Instruments实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByInstruments" parameterType="com.music.entity.Instruments" resultType="java.lang.Integer">
+    select count(*) from music_instruments
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+        <if test="insIsdel != null and insIsdel != ''">
+            ins_isdel = 1
+        </if>
+        <if test="insId != null">
+          AND  ins_id = #{insId,jdbcType=VARCHAR}
+        </if>
+        <if test="insName != null and insName !=''">
+          AND   ins_name =  #{insName,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Instruments实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByInstruments" parameterType="com.music.entity.Instruments" resultMap="BaseResultMap">
+    select * from music_instruments
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+        <if test="insIsdel != null and insIsdel != ''">
+          ins_isdel = 1
+        </if>
+        <if test="insId != null">
+          AND  ins_id = #{insId,jdbcType=VARCHAR}
+        </if>
+        <if test="insName != null and insName !=''">
+          AND   ins_name =  #{insName,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据Instruments实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="com.music.entity.Instruments" resultType="java.lang.Integer">
+    select count(*) from  music_instruments
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+        <if test="insIsdel != null and insIsdel != ''">
+          ins_isdel = 1
+        </if>
+        <if test="insId != null">
+         AND  ins_id = #{insId,jdbcType=VARCHAR}
+        </if>
+        <if test="insName != null and insName !=''">
+          AND   ins_name like CONCAT('%', #{insName,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Instruments实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="com.music.entity.Instruments" resultMap="BaseResultMap">
+    select * from  music_instruments
+    <where>
+      <trim suffixOverrides="and|or">
+        <!-- 未删除数据 -->
+        <if test="insIsdel != null and insIsdel != ''">
+          ins_isdel = 1
+        </if>
+        <if test="insId != null">
+        AND  ins_id = #{insId,jdbcType=VARCHAR}
+        </if>
+        <if test="insName != null and insName !=''">
+          AND   ins_name like CONCAT('%', #{insName,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据music_instruments实体删除（假删、更新删除状态） -->
+  <update id="updateByInstrumentsDeleteState"  parameterType="com.music.entity.Instruments">
+    update  music_instruments
+    <set>
+      ins_isdel  = 0
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="insId != null">
+          ins_id = #{insId,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据instruments实体删除 -->
+  <delete id="deleteByInstruments" parameterType="com.music.entity.Instruments">
+    delete from   music_instruments
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="insId != null">
+          ins_id = #{insId,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>
